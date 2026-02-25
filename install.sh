@@ -66,12 +66,12 @@ info "验证安装..."
 
 # ─── 6. 认证测试 ─────────────────────────────────────
 echo ""
-if [ -z "${GH_TOKEN:-}" ]; then
-  warn "未设置 GH_TOKEN，跳过认证测试"
-  warn "使用方式: export GH_TOKEN=your_token && bash $0"
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  warn "未设置 GITHUB_TOKEN，跳过认证测试"
+  warn "使用方式: export GITHUB_TOKEN=your_token && bash $0"
 else
   info "测试 Token 认证..."
-  if GH_TOKEN="$GH_TOKEN" "$INSTALL_DIR/gh" auth status 2>&1; then
+  if GITHUB_TOKEN="$GITHUB_TOKEN" "$INSTALL_DIR/gh" auth status 2>&1; then
     success "Token 认证成功"
   else
     error "Token 认证失败，请检查 token 权限或有效期"
